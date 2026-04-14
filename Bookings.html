@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bookings | Spotless Solutions</title>
+        <link rel="stylesheet" href="home-book-style.css">
+		<meta name="keywords" content="cleaning services">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+        <link rel="icon" href="images/favicon.ico">
+    </head>
+
+    <body>
+        <div class="background">
+            <!--Header-->
+            <header>
+                <div class="header-container">
+                    <div class="header-top">
+                        <a href="Home.html"><img src="images/logo.png" alt="spotless solutions cleaning services logo"></a>
+                        <h1>Spotless Solutions</h1>
+                    </div>
+                        
+                    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="Services.html">Services</a></li>  
+                        <li><a href="Bookings.html">Bookings</a></li>
+                        <li><a href="About Us.html">About Us</a></li>
+                    </ul>
+                </div>
+            </header><br><br>
+
+            <!--Bookings-->
+            <div class="bookings-background">
+                <div class="booking-form">
+                    <h1>Schedule Your Cleaning</h1>
+
+                    <form action="Home.html" name="bookingsForm" onsubmit="return Validate()">
+
+                        <!--Personal Details-->
+                        <div class="booking-row">
+                            <div class="booking-detail">
+                                <h4>First Name:</h4>
+                                <input type="text" name="firstName" placeholder="Add First Name" required>
+                            </div>
+                            <div class="booking-detail">
+                                <h4>Surname:</h4>
+                                <input type="text" name="surname" placeholder="Add Surname" required>
+                            </div>
+                        </div>
+
+                        <div class="booking-row">
+                            <div class="booking-detail">
+                                <h4>Phone Number:</h4>
+                                <input type="tel" name="number" onkeypress="return /[0-9]/.test(event.key)" pattern="[0-9]{10}" maxlength="10" placeholder="Add Phone Number">
+                            </div>
+                            <div class="booking-detail">
+                                <h4>Email:</h4>
+                                <input type="email" name="bookingsEmail" placeholder="Add Email Address">
+                            </div>
+                        </div>
+
+                        <h3>Select a Service:</h3>
+                        <div class="service-options">
+                            <div class="service-box">
+                                <label>
+                                    <input type="radio" name="service" value="specialized">
+                                    <span>Specialized Services</span>
+                                </label>
+
+                                <div class="sub-options">
+                                    <select name="specialService">
+                                        <option>Select Service</option>
+                                        <option>Window Cleaning</option>
+                                        <option>Carpet & Furniture Cleaning</option>
+                                        <option>Post Construction Cleaning</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="service-box">
+                                <label>
+                                    <input type="radio" name="service" value="residential">
+                                    <span>Residential Deep Cleaning Package</span>
+                                </label>
+                            </div>
+
+                            <div class="service-box">
+                                <label>
+                                    <input type="radio" name="service" value="industrial">
+                                    <span>Industrialized Services Package</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="terms">
+                            <label>
+                                <input type="checkbox" name="terms">
+                                I accept the terms and conditions
+                            </label>
+                        </div>
+
+                        <button type="submit" class="book-btn">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="Home.html">Home</a></li>
+                            <li><a href="Services.html">Services</a></li>
+                            <li><a href="Bookings.html">Bookings</a></li>
+                            <li><a href="About Us.html">About Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="socials">
+                        <ul>
+                            <li><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            <li><a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="https://web.facebook.com/"><i class="fa-brands fa-facebook"></i></a></li>
+                        </ul>
+                    </div>
+                    <p>Copyright &copy; Spotless Solutions 2026</p>
+                    <p>Designed by WebWaveCrew</p>
+                </div> 
+            </footer>
+        </div>
+
+            <!--Navbar-->
+            <script>
+                const hamburger = document.getElementById('hamburger');
+                const navMenu = document.getElementById('nav-menu');
+
+                hamburger.addEventListener('click', () => {
+                    const open = navMenu.classList.toggle('open');
+                    hamburger.classList.toggle('open', open);
+                    hamburger.setAttribute('aria-expanded', open);
+                });
+
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('open');
+                        hamburger.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', false);
+                    });
+                });
+
+                document.addEventListener('click', e => {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('open');
+                        hamburger.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', false);
+                    }
+                });
+            </script>
+
+            <!--Bookings Form Personal Details & Service Opt-->
+            <script type="text/javascript">
+                function Validate(){
+
+                var fname = document.bookingsForm.firstName.value;
+                var sname = document.bookingsForm.surname.value;
+                var phone = document.bookingsForm.number.value;
+                var email = document.bookingsForm.bookingsEmail.value;
+                var terms = document.bookingsForm.terms.checked;
+
+                // First Name
+                if(fname == ""){
+                    alert("Please enter your First Name.");
+                    return false;
+                }
+
+                // Surname
+                if(sname == ""){
+                    alert("Please enter your Surname.");
+                    return false;
+                }
+
+                // Phone
+                if(phone == ""){
+                    alert("Please provide your Phone Number.");
+                    return false;
+                }
+
+                if(phone.length != 10){
+                    alert("Phone number must be 10 digits long.");
+                    return false;
+                }
+
+                // Email
+                if(email == ""){
+                    alert("Please provide your Email.");
+                    return false;
+                }
+
+                // Service Selection
+                var serviceSelected = document.querySelector('input[name="service"]:checked');
+                if(serviceSelected == null){
+                    alert("Please select a service.");
+                    return false;
+                }
+
+                // Specialized Services
+                if(serviceSelected.value === "specialized"){
+                    var subService = document.bookingsForm.specialService.value;
+                    if(subService === "Select Service"){
+                        alert("Please select a Specialized Service option.");
+                        return false;
+                    }
+                }
+
+                // Terms Accept
+                if(terms == false){
+                    alert("Please accept the terms and conditions.");
+                    return false;
+                }
+
+                // Confirmation
+                var confirmSubmit = window.confirm("Are you sure you want to submit this booking?");
+
+                if(confirmSubmit){
+                    alert("Thank you! Your booking has been submitted.");
+                    return true;
+                } else {
+                    document.bookingsForm.reset();
+                    return false;
+                }}
+                
+            </script>
+
+            <script>
+                // Radio
+                const radios = document.querySelectorAll('input[name="service"]');
+                const subOptions = document.querySelector('.sub-options');
+
+                subOptions.style.display = "none";
+
+                radios.forEach(function(radio) {
+                    radio.addEventListener("change", function() {
+
+                        if (radio.value === "specialized") {
+                            subOptions.style.display = "block";
+                        } else {
+                            subOptions.style.display = "none";
+                        }
+                    });
+                });
+
+                // Clickable box
+            const serviceBoxes = document.querySelectorAll('.service-box');
+                serviceBoxes.forEach(function(box) {
+                    box.addEventListener('click', function() {
+                        serviceBoxes.forEach(function(b) {
+                            b.classList.remove('selected');
+                        });
+
+                        box.classList.add('selected');
+                        const radio = box.querySelector('input[type="radio"]');
+                        if (radio) {
+                            radio.checked = true;
+                            radio.dispatchEvent(new Event("change"));
+                        }
+                    });
+                });
+            </script>
+        
+    </body>
+</html>
+
